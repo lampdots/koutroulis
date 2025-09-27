@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Βασικό Πακέτο - Δήλωση Ενδιαφέροντος</title>
+    <link rel="stylesheet" href="offer.css">
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script>emailjs.init('user_xxxxxxxxxxxxxxxxx');</script>
+</head>
+<body>
+    <div class="container">
+        <h2>Βασικό Πακέτο</h2>
+        <p>Φωτογράφιση 2 ωρών, 50 επεξεργασμένες φωτογραφίες. Τιμή: 100€</p>
+        <form id="interestForm">
+            <label for="name">Το όνομά σας:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="date">Ημερομηνία εκδήλωσης:</label>
+            <input type="date" id="date" name="date" required>
+            <button type="submit">Αποστολή</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="offer.js"></script>
+</body>
+</html>

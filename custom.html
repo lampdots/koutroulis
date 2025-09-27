@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Δική σας Προσφορά - Δήλωση Ενδιαφέροντος</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="offer.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>emailjs.init('user_xxxxxxxxxxxxxxxxx');</script>
+</head>
+<body>
+    <div class="container">
+        <h2>Δική σας Προσφορά</h2>
+        <p>Επιλέξτε εσείς τις ώρες φωτογράφισης και τον αριθμό φωτογραφιών που επιθυμείτε!</p>
+        <form id="interestForm">
+            <label for="name">Το όνομά σας:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="date">Ημερομηνία εκδήλωσης:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="hours">Ώρες φωτογράφισης:</label>
+            <select id="hours" name="hours" required>
+                <option value="">Επιλέξτε...</option>
+                <option value="1">1 ώρα</option>
+                <option value="2">2 ώρες</option>
+                <option value="3">3 ώρες</option>
+                <option value="4">4 ώρες</option>
+                <option value="5">5 ώρες</option>
+                <option value="6">6 ώρες</option>
+                <option value="7">7 ώρες</option>
+                <option value="8">8 ώρες</option>
+                <option value="all">Ολοήμερη</option>
+            </select>
+            <label for="photos">Αριθμός φωτογραφιών:</label>
+            <select id="photos" name="photos" required>
+                <option value="">Επιλέξτε...</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="80">80</option>
+                <option value="120">120</option>
+                <option value="200">200</option>
+                <option value="250">250+</option>
+            </select>
+            <button type="submit">Αποστολή</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="custom.js"></script>
+    <script src="offer.js"></script>
+</body>
+</html>
