@@ -1,6 +1,6 @@
-// offer.js - Υποβολή φόρμας και αποστολή email μέσω EmailJS ή παρόμοιας υπηρεσίας
-
 document.addEventListener('DOMContentLoaded', function() {
+    emailjs.init('YOUR_PUBLIC_KEY'); // Αντικατάστησε με το Public Key σου
+
     const form = document.getElementById('interestForm');
     const resultDiv = document.getElementById('result');
 
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const name = form.name.value.trim();
         const date = form.date ? form.date.value : '';
-        // Μπορεί να υπάρχουν και άλλα πεδία (π.χ. hours, photos)
         let extra = '';
         if (form.hours) extra += '\nΏρες: ' + form.hours.value;
         if (form.photos) extra += '\nΦωτογραφίες: ' + form.photos.value;
@@ -19,24 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // --- EmailJS ---
-        // Συμπλήρωσε τα παρακάτω με τα δικά σου στοιχεία:
-        // service_id: το id του email service σου (π.χ. gmail)
-        // template_id: το id του template (π.χ. template_cq4g98)
-        // user_id/public key: το public key σου (π.χ. user_xxxxxxxxxxxxxxxxx)
         console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
-    emailjs.send('service_e4tf667', 'template_cq4g98', {
+
+        emailjs.send('service_e4tf667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
             event_date: date,
             extra_info: extra
         })
-        .then(function() {
-            console.log('EmailJS: Το email εστάλη επιτυχώς!');
+        .then(function(response) {
+            console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);
             resultDiv.textContent = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
-        }, function(error) {
+        })
+        .catch(function(error) {
             console.error('EmailJS: Σφάλμα αποστολής!', error);
             resultDiv.textContent = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
             resultDiv.style.color = 'red';
