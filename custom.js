@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.style.color = 'red';
             return;
         }
+        console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
         emailjs.send('service_e4f667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
@@ -57,10 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
             extra_info: extra
         })
         .then(function() {
+            console.log('EmailJS: Το email εστάλη επιτυχώς!');
             resultDiv.innerHTML = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
         }, function(error) {
+            console.error('EmailJS: Σφάλμα αποστολής!', error);
             resultDiv.innerHTML = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
             resultDiv.style.color = 'red';
         });

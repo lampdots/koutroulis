@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // service_id: το id του email service σου (π.χ. gmail)
         // template_id: το id του template (π.χ. template_cq4g98)
         // user_id/public key: το public key σου (π.χ. user_xxxxxxxxxxxxxxxxx)
+        console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
         emailjs.send('service_e4f667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
@@ -31,10 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
             extra_info: extra
         })
         .then(function() {
+            console.log('EmailJS: Το email εστάλη επιτυχώς!');
             resultDiv.textContent = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
         }, function(error) {
+            console.error('EmailJS: Σφάλμα αποστολής!', error);
             resultDiv.textContent = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
             resultDiv.style.color = 'red';
         });
