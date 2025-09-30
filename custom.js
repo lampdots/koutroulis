@@ -38,9 +38,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        // Εδώ μπορεί να προστεθεί αποστολή email
-        resultDiv.innerHTML += '<br>Το αίτημά σας καταχωρήθηκε! Θα επικοινωνήσουμε σύντομα.';
-        resultDiv.style.color = 'green';
-        form.reset();
+        const name = form.name.value.trim();
+        const date = form.date ? form.date.value : '';
+        const hours = form.hours ? form.hours.value : '';
+        const photos = form.photos ? form.photos.value : '';
+        let extra = '';
+        if (hours) extra += '\nΏρες: ' + hours;
+        if (photos) extra += '\nΦωτογραφίες: ' + photos;
+        if (!name) {
+            resultDiv.textContent = 'Παρακαλώ συμπληρώστε το όνομά σας.';
+            resultDiv.style.color = 'red';
+            return;
+        }
+        emailjs.send('service_e4f667', 'template_cq4g98', {
+            to_email: 'lampdotshua@gmail.com',
+            from_name: name,
+            event_date: date,
+            extra_info: extra
+        })
+        .then(function() {
+            resultDiv.innerHTML = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
+            resultDiv.style.color = 'green';
+            form.reset();
+        }, function(error) {
+            resultDiv.innerHTML = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
+            resultDiv.style.color = 'red';
+        });
     });
 });

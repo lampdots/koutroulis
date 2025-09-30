@@ -20,14 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // --- EmailJS ---
-        // 1. Πρόσθεσε στο <head> του html σου:
-        // <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-        // <script>emailjs.init('user_xxxxxxxxxxxxxxxxx');</script>
-        // 2. Φτιάξε λογαριασμό στο https://www.emailjs.com/ και δημιούργησε service/template
-        // 3. Βάλε τα δικά σου service_id, template_id, user_id παρακάτω:
-
-        /*
-        emailjs.send('service_xxxxx', 'template_xxxxx', {
+        // Συμπλήρωσε τα παρακάτω με τα δικά σου στοιχεία:
+        // service_id: το id του email service σου (π.χ. gmail)
+        // template_id: το id του template (π.χ. template_cq4g98)
+        // user_id/public key: το public key σου (π.χ. user_xxxxxxxxxxxxxxxxx)
+        emailjs.send('service_e4f667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
             event_date: date,
@@ -41,11 +38,5 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.textContent = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
             resultDiv.style.color = 'red';
         });
-        */
-
-        // Για demo, εμφανίζουμε μήνυμα επιτυχίας
-        resultDiv.textContent = 'Το αίτημά σας καταχωρήθηκε! Θα επικοινωνήσουμε σύντομα.';
-        resultDiv.style.color = 'green';
-        form.reset();
     });
 });
