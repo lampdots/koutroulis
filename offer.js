@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // template_id: το id του template (π.χ. template_cq4g98)
         // user_id/public key: το public key σου (π.χ. user_xxxxxxxxxxxxxxxxx)
         console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
-        emailjs.send('service_e4f667', 'template_cq4g98', {
+    emailjs.send('service_e4tf667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
             event_date: date,

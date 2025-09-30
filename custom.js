@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
-        emailjs.send('service_e4f667', 'template_cq4g98', {
+    emailjs.send('service_e4tf667', 'template_cq4g98', {
             to_email: 'lampdotshua@gmail.com',
             from_name: name,
             event_date: date,
