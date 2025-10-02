@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const form = document.getElementById('interestForm');
     const resultDiv = document.getElementById('result');
+     const packageName = document.querySelector('.container').dataset.package; // Λήψη του ονόματος πακέτου από το data attribute
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const templateParams = {
             from_name: name,
             event_date: date,
-            extra_info: extra
+            extra_info: extra,
+            package: packageName // Προσθήκη του ονόματος πακέτου στα δεδομένα
         };
 
         console.log("Αποστολή δεδομένων:", templateParams);

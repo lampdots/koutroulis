@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const photosSelect = document.getElementById('photos');
     const resultDiv = document.getElementById('result');
 
+    let finalPrice=0;
+
     function calculatePrice() {
         let hours = hoursSelect.value;
         let photos = photosSelect.value;
@@ -27,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        finalPrice = price;
+
         if (hours && photos) {
             resultDiv.innerHTML = '<b>Ενδεικτική τιμή:</b> ' + price.toFixed(2) + '€';
         } else {
@@ -44,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const hours = form.hours ? form.hours.value : '';
         const photos = form.photos ? form.photos.value : '';
 
+      
+
         if (!name) {
             resultDiv.textContent = 'Παρακαλώ συμπληρώστε το όνομά σας.';
             resultDiv.style.color = 'red';
@@ -59,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
         emailjs.send('service_e4tf667', 'template_cq4g998', {
             from_name: name,
             event_date: date,
-            extra_info: extra
+            extra_info: extra,
+            price: finalPrice.toFixed(2) + '€'
         })
         .then(function(response) {
             console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);
