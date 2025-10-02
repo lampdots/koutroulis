@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Αποστολή δεδομένων:", templateParams);
 
         // Αποστολή μέσω EmailJS
-        emailjs.send('service_e4tf667', 'template_cq4g98', templateParams)
+        emailjs.send('service_e4tf667', 'template_cq4g998', templateParams)
             .then(function (response) {
                 console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);
                 resultDiv.textContent = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
