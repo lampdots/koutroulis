@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    emailjs.init('YJRDfBx_buj0v1-d-u'); // Αντικατάστησε με το Public Key σου
+    emailjs.init('nllXVakVvC6CrMvp5'); // Αντικατάστησε με το Public Key σου
 
     const form = document.getElementById('interestForm');
     const resultDiv = document.getElementById('result');
