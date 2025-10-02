@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS v4
-    emailjs.init('nllXVakVvC6CrMvp5'); // Αντικατάστησε με το public key σου από το Dashboard
+    emailjs.init('34r-WzdF4wWkbgCcU'); // Αντικατάστησε με το public key σου από το Dashboard
 
     const form = document.getElementById('interestForm');
     const hoursSelect = document.getElementById('hours');
