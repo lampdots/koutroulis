@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hoursSelect = document.getElementById('hours');
     const photosSelect = document.getElementById('photos');
     const resultDiv = document.getElementById('result');
-
+   
     let finalPrice=0;
 
     function calculatePrice() {
@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const date = form.date ? form.date.value : '';
         const hours = form.hours ? form.hours.value : '';
         const photos = form.photos ? form.photos.value : '';
-
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
       
 
         if (!name) {
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
             event_date: date,
             extra_info: extra,
             price: finalPrice.toFixed(2) + '€'
+            , email: email,
+            phone: phone
         })
         .then(function(response) {
             console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);

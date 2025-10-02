@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const name = form.name.value.trim();
         const date = form.date ? form.date.value : '';
+        const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
         let extra = '';
         if (form.hours) extra += '\nΏρες: ' + form.hours.value;
         if (form.photos) extra += '\nΦωτογραφίες: ' + form.photos.value;
@@ -27,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
             from_name: name,
             event_date: date,
             extra_info: extra,
-            package: packageName // Προσθήκη του ονόματος πακέτου στα δεδομένα
+            package: packageName, // Προσθήκη του ονόματος πακέτου στα δεδομένα
+            email: email,
+            phone: phone
         };
 
         console.log("Αποστολή δεδομένων:", templateParams);
