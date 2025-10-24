@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const date = form.date ? form.date.value : '';
         const email = form.email.value.trim();
         const phone = form.phone.value.trim();
+        const location = form.location ? form.location.value.trim() : '';
 
         if (!name) {
             resultDiv.textContent = 'Παρακαλώ συμπληρώστε το όνομά σας.';
@@ -88,7 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
             extra_info: extra,
             price: finalPrice.toFixed(2) + '€',
             email: email,
-            phone: phone
+            phone: phone,
+            location: location
         })
         .then(function(response) {
             console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);

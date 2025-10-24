@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = form.name.value.trim();
         const date = form.date ? form.date.value : '';
         const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
+        const phone = form.phone.value.trim();
+        const location = form.location ? form.location.value.trim() : '';   
+    
         let extra = '';
         if (form.hours) extra += '\nΏρες: ' + form.hours.value;
         if (form.photos) extra += '\nΦωτογραφίες: ' + form.photos.value;
@@ -31,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
             extra_info: extra,
             package: packageName, // Προσθήκη του ονόματος πακέτου στα δεδομένα
             email: email,
-            phone: phone
+            phone: phone,
+            location: location
         };
 
         console.log("Αποστολή δεδομένων:", templateParams);
