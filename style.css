@@ -1,4 +1,4 @@
-/* ===== ΕΜΦΑΝΙΣΗ ΕΠΙΚΟΙΝΩΝΙΑΣ ===== */
+/* ===== ΕΠΙΚΟΙΝΩΝΙΑ ===== */
 .contact-info {
     margin: 2rem 0 0 0;
     padding: 1.2rem 1.5rem;
@@ -19,7 +19,7 @@
     text-decoration: underline;
 }
 
-/* ===== ΓΕΝΙΚΗ ΕΜΦΑΝΙΣΗ ===== */
+/* ===== ΓΕΝΙΚΟ STYLE ===== */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
@@ -28,7 +28,7 @@ body {
     color: #222;
 }
 
-/* ===== HEADER ΜΕ ΜΙΚΡΗ ΕΙΚΟΝΑ ===== */
+/* ===== HEADER ===== */
 .header-bar {
     background: #2d3e50;
     color: #fff;
@@ -37,23 +37,29 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.header-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;               /* απόσταση εικόνας-κειμένου */
-    font-size: 2rem;
+.header-row {
+    display: inline-flex;           /* οριζόντια στοίχιση */
+    align-items: center;            /* κάθετο κεντράρισμα */
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-row h1 {
     margin: 0;
-    letter-spacing: 1px;
+    font-size: 2rem;
     font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.2;
 }
 
 .logo-small {
-    width: 50px;             /* μέγεθος εικόνας */
+    width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 6px;      /* ή 50% για κυκλικό λογότυπο */
-    vertical-align: middle;
-    border: 2px solid #fff;  /* λεπτό λευκό περίγραμμα */
+    border-radius: 6px;
+    display: block;                 /* αποφεύγει baseline offset */
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 .header-bar p {
@@ -62,12 +68,14 @@ body {
     color: #e0e7ff;
 }
 
-/* responsive μικρές οθόνες */
+/* responsive */
 @media (max-width: 600px) {
-    .header-title {
-        font-size: 1.4rem;
+    .header-row {
         flex-direction: column;
         gap: 6px;
+    }
+    .header-row h1 {
+        font-size: 1.4rem;
     }
     .logo-small {
         width: 45px;
@@ -204,7 +212,7 @@ footer {
     box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
 }
 
-/* Social links */
+/* ===== Social links ===== */
 .social-links a {
     color: #333;
     text-decoration: none;
