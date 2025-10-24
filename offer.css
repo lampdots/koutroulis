@@ -55,6 +55,53 @@ input[type="text"]:focus {
     border: 2px solid #2d3e50;
 }
 
+input[type="email"] {
+    padding: 0.7rem 1rem;
+    border: 2px solid #e0e7ff;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    outline: none;
+    transition: border 0.2s;
+}
+input[type="email"]:focus {
+    border: 2px solid #2d3e50;
+}
+
+input[type="tel"] {
+    padding: 0.7rem 1rem;
+    border: 2px solid #e0e7ff;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    outline: none;
+    transition: border 0.2s;
+}
+input[type="tel"]:focus {
+    border: 2px solid #2d3e50;
+}
+
+
+
+input[type="date"] {
+    padding: 0.7rem 1rem;
+    border: 2px solid #e0e7ff;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    outline: none;
+    transition: border 0.2s;
+}
+input[type="date"]:focus {
+    border: 2px solid #2d3e50;
+}
+
+
+
+
+
+
+
+
+
+
 button[type="submit"] {
     background: #2d3e50;
     color: #fff;
