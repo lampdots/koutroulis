@@ -1,4 +1,4 @@
-/* offer.css - Ειδικό στυλ για τις σελίδες προσφορών (βελτιωμένο + responsive) */
+/* offer.css - Ειδικό στυλ για τις σελίδες προσφορών (βελτιωμένο + responsive + spacing fix) */
 
 /* ----------------- Βοηθητικές μεταβλητές ----------------- */
 :root{
@@ -74,6 +74,7 @@ form#interestForm{
   display:flex;
   flex-direction:column;
   gap:1.15rem;
+  padding:0 0.8rem; /* ✅ προστέθηκε για να μην ακουμπάνε οι άκρες */
 }
 
 /* Ετικέτες */
@@ -81,6 +82,7 @@ label{
   font-size:.98rem;
   color:var(--ink);
   font-weight:600;
+  padding-left:4px; /* ✅ ελαφρύ κενό αριστερά */
 }
 
 /* Πεδία (όλα εκτός από checkbox) */
@@ -186,8 +188,6 @@ button[type="submit"]:active{
 }
 
 /* ----------------- Responsive Design ----------------- */
-
-/* Tablets και κινητά (<= 768px) */
 @media (max-width: 768px){
   body{
     padding:16px;
@@ -206,8 +206,12 @@ button[type="submit"]:active{
     font-size:.95rem;
     margin-bottom:1.2rem;
   }
+  form#interestForm{
+    padding:0 0.6rem; /* ✅ λίγο μικρότερο padding για κινητά */
+  }
   label{
     font-size:.95rem;
+    padding-left:3px;
   }
   input:not([type="checkbox"]){
     padding:.7rem .9rem;
@@ -228,7 +232,6 @@ button[type="submit"]:active{
   }
 }
 
-/* Πολύ μικρές οθόνες (<= 420px) */
 @media (max-width: 420px){
   body{
     padding:12px;
@@ -244,6 +247,7 @@ button[type="submit"]:active{
   }
   label{
     font-size:.9rem;
+    padding-left:2px;
   }
   .service-item{
     font-size:.9rem;
