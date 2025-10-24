@@ -1,4 +1,4 @@
-/* offer.css - Ειδικό στυλ για τις σελίδες προσφορών (ανανεωμένο) */
+/* offer.css - Ειδικό στυλ για τις σελίδες προσφορών (βελτιωμένο + responsive) */
 
 /* ----------------- Βοηθητικές μεταβλητές ----------------- */
 :root{
@@ -135,7 +135,7 @@ input:not([type="checkbox"]):focus{
   transform:translateY(1px);
 }
 
-/* Χρώμα checkbox (native για συμβατότητα) */
+/* Χρώμα checkbox */
 .service-item input[type="checkbox"]{
   margin-top:.1rem;
   accent-color:var(--primary);
@@ -185,8 +185,71 @@ button[type="submit"]:active{
   color:var(--ink-soft);
 }
 
-/* ----------------- Responsive ----------------- */
+/* ----------------- Responsive Design ----------------- */
+
+/* Tablets και κινητά (<= 768px) */
+@media (max-width: 768px){
+  body{
+    padding:16px;
+    align-items:flex-start;
+  }
+  .container{
+    padding:1.6rem 1.2rem;
+    border-radius:16px;
+    max-width:100%;
+    box-shadow:0 6px 20px rgba(45,62,80,0.1);
+  }
+  h2{
+    font-size:1.45rem;
+  }
+  p{
+    font-size:.95rem;
+    margin-bottom:1.2rem;
+  }
+  label{
+    font-size:.95rem;
+  }
+  input:not([type="checkbox"]){
+    padding:.7rem .9rem;
+    font-size:.95rem;
+  }
+  .service-item{
+    font-size:.95rem;
+    padding:6px 8px;
+    gap:8px;
+  }
+  .total-row{
+    font-size:1rem;
+  }
+  button[type="submit"]{
+    width:100%;
+    font-size:1rem;
+    padding:.85rem 0;
+  }
+}
+
+/* Πολύ μικρές οθόνες (<= 420px) */
 @media (max-width: 420px){
-  .container{ padding:1.6rem 1.1rem; border-radius:16px; }
-  h2{ font-size:1.4rem; }
+  body{
+    padding:12px;
+  }
+  .container{
+    padding:1.2rem 1rem;
+  }
+  h2{
+    font-size:1.3rem;
+  }
+  p{
+    font-size:.9rem;
+  }
+  label{
+    font-size:.9rem;
+  }
+  .service-item{
+    font-size:.9rem;
+  }
+  button[type="submit"]{
+    font-size:.95rem;
+    border-radius:10px;
+  }
 }
