@@ -5,80 +5,118 @@
     <title>Δική σας Προσφορά - Δήλωση Ενδιαφέροντος</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="offer.css">
-  <!-- EmailJS SDK v4 -->
-  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-
-
+    <!-- EmailJS SDK v4 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h2>Δική σας Προσφορά</h2>
-        <p>Επιλέξτε εσείς τις ώρες φωτογράφισης και τον αριθμό φωτογραφιών που επιθυμείτε!</p>
+        <p>Επιλέξτε εσείς τις παροχές που επιθυμείτε και δείτε άμεσα την ενδεικτική τιμή!</p>
+
         <form id="interestForm">
             <label for="name">Το όνομά σας:</label>
             <input type="text" id="name" name="name" required>
+
             <label for="email">Email σας:</label>
-        <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required>
+
             <label for="date">Ημερομηνία εκδήλωσης:</label>
             <input type="date" id="date" name="date" required>
 
             <label for="location">Τοποθεσία:</label>
-<input type="text" id="location" name="location" required placeholder="Πόλη ή διεύθυνση">
+            <input type="text" id="location" name="location" required placeholder="Πόλη ή διεύθυνση">
 
- <label for="phone">Τηλέφωνο επικοινωνίας:</label>
-        <input type="tel" id="phone" name="phone" required> 
+            <label for="phone">Τηλέφωνο επικοινωνίας:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-        <!-- ΠΑΡΟΧΕΣ ΜΕ CHECKBOXES -->
-<fieldset id="services" class="services">
-  <legend>Επιλέξτε Παροχές</legend>
+            <!-- ΠΑΡΟΧΕΣ ΜΕ CHECKBOXES -->
+            <fieldset id="services" class="services">
+                <legend>Επιλέξτε Παροχές</legend>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="extra_hour" data-price="60">
-    +1 ώρα φωτογράφισης — 60€
-  </label>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="photo_prep" data-price="80">
+                    1. ΦΩΤΟΓΡΑΦΙΣΗ ΠΡΟΕΤΟΙΜΑΣΙΑΣ — 80€
+                </label>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="drone" data-price="120">
-    Drone λήψεις — 120€
-  </label>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="video_prep" data-price="100">
+                    2. ΒΙΝΤΕΟ ΠΡΟΕΤΟΙΜΑΣΙΑΣ — 100€
+                </label>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="second_photographer" data-price="150">
-    2ος φωτογράφος — 150€
-  </label>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="photo_video_prep" data-price="140">
+                    3. ΦΩΤΟΓΡΑΦΙΣΗ ΚΑΙ ΒΙΝΤΕΟ ΠΡΟΕΤΟΙΜΑΣΙΑΣ — 140€
+                </label>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="video_highlight" data-price="250">
-    Βίντεο highlight (2–3') — 250€
-  </label>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="photo_church" data-price="250">
+                    4. ΦΩΤΟΓΡΑΦΙΣΗ ΣΤΗΝ ΕΚΚΛΗΣΙΑ — 250€
+                </label>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="album" data-price="180">
-    Έντυπο άλμπουμ — 180€
-  </label>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="video_church" data-price="350">
+                    5. ΒΙΝΤΕΟ ΚΑΙ ΜΟΝΤΑΖ ΕΚΚΛΗΣΙΑΣ — 350€
+                </label>
 
-  <label class="service-item">
-    <input type="checkbox" name="service" value="express_delivery" data-price="40">
-    Express παράδοση (72h) — 40€
-  </label>
-</fieldset>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="art_after_church" data-price="120">
+                    6. ΚΑΛΛΙΤΕΧΝΙΚΗ ΦΩΤΟΓΡΑΦΙΣΗ ΜΕΤΑ ΤΗΝ ΕΚΚΛΗΣΙΑ ΣΕ ΤΟΠΟΘΕΣΙΑ ΤΗΣ ΕΠΙΛΟΓΗΣ ΣΑΣ — 120€
+                </label>
 
-<!-- Σύνολο -->
-<div class="total-row">
-  <strong>Σύνολο:</strong> <span id="totalAmount">0</span>€
-</div>
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="drone" data-price="350">
+                    7. ΚΑΛΥΨΗ ΜΕ DRONE — 350€
+                </label>
 
-<!-- Κρυφά πεδία για αποστολή μέσω EmailJS -->
-<input type="hidden" id="selectedServices" name="selectedServices">
-<input type="hidden" id="totalPrice" name="totalPrice">
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="reception_video_2h" data-price="150">
+                    8. ΒΙΝΤΕΟ ΚΑΛΥΨΗ ΔΕΞΙΩΣΗΣ (ΦΩΤΟ + ΒΙΝΤΕΟ) 2 ΩΡΕΣ — 150€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="prewedding_photo" data-price="150">
+                    9. PRE WEDDING ΦΩΤΟΓΡΑΦΙΣΗ — 150€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="nextday_photo_video" data-price="250">
+                    10. NEXT DAY (ΦΩΤΟ ΚΑΙ ΒΙΝΤΕΟ) — 250€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="album_25x40" data-price="350">
+                    11. ΑΛΜΠΟΥΜ 25×40 ΣΤΟ ΚΟΥΤΙ ΤΟΥ — 350€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="album_20x30" data-price="250">
+                    12. ΑΛΜΠΟΥΜ 20×30 ΣΤΟ ΚΟΥΤΙ ΤΟΥ — 250€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="album_15x21" data-price="80">
+                    13. ΑΛΜΠΟΥΜ 15×21 ΣΤΟ ΚΟΥΤΙ ΤΟΥ — 80€
+                </label>
+
+                <label class="service-item">
+                    <input type="checkbox" name="service" value="digital_album_20x30" data-price="130">
+                    14. ΑΛΜΠΟΥΜ ΨΗΦΙΑΚΟ 20×30 — 130€
+                </label>
+            </fieldset>
+
+            <!-- Σύνολο -->
+            <div class="total-row">
+                <strong>Σύνολο:</strong> <span id="totalAmount">0</span>€
+            </div>
 
             <button type="submit">Αποστολή</button>
         </form>
+
         <div id="result"></div>
     </div>
+
     <script src="custom.js"></script>
-    <script src="offer.js"></script>
+    <!-- Αν έχεις και offer.js μπορεί να μείνει, δεν απαιτείται όμως για τον νέο υπολογισμό -->
+    <!-- <script src="offer.js"></script> -->
 </body>
 </html>

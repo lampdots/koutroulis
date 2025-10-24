@@ -6,17 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.getElementById('interestForm');
     const resultDiv = document.getElementById('result');
-
-    // ΝΕΟ: Πεδία/στοιχεία για παροχές
-    const servicesFieldset = document.getElementById('services'); // <fieldset id="services"> ... </fieldset>
+    const servicesFieldset = document.getElementById('services');
+    const totalAmountEl = document.getElementById('totalAmount');
 
     let finalPrice = 0;
 
-    // ===== ΝΕΑ ΣΥΝΑΡΤΗΣΗ ΥΠΟΛΟΓΙΣΜΟΥ ΤΙΜΗΣ ΜΕ CHECKBOXES =====
     function calculatePrice() {
         if (!servicesFieldset) {
-            // Αν δεν υπάρχει το fieldset, καθάρισε εμφάνιση και βγες
             finalPrice = 0;
+            if (totalAmountEl) totalAmountEl.textContent = '0';
             if (resultDiv) resultDiv.innerHTML = '';
             return;
         }
@@ -30,23 +28,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         finalPrice = price;
 
-        // Εμφάνιση ενδεικτικής τιμής αν έχει επιλεγεί έστω μία παροχή
+        // Ενημέρωση εμφανιζόμενου συνόλου
+        if (totalAmountEl) {
+            totalAmountEl.textContent = price.toFixed(2).replace('.', ',');
+        }
+
+        // Προαιρετική ενδεικτική τιμή στο κάτω πλαίσιο
         if (checked.length > 0) {
-            resultDiv.innerHTML = '<b>Ενδεικτική τιμή:</b> ' + price.toFixed(2) + '€';
-            resultDiv.style.color = ''; // reset τυχόν κόκκινο/πράσινο
+            if (resultDiv) {
+                resultDiv.innerHTML = '<b>Ενδεικτική τιμή:</b> ' + price.toFixed(2) + '€';
+                resultDiv.style.color = '';
+            }
         } else {
-            resultDiv.innerHTML = '';
+            if (resultDiv) resultDiv.innerHTML = '';
         }
     }
 
-    // ===== ΑΚΡΟΑΣΤΗΣ ΑΛΛΑΓΩΝ ΣΤΙΣ ΠΑΡΟΧΕΣ =====
+    // Υπολογισμός σε κάθε αλλαγή επιλογής
     if (servicesFieldset) {
         servicesFieldset.addEventListener('change', calculatePrice);
-        // Αρχικός υπολογισμός
-        calculatePrice();
+        calculatePrice(); // αρχικός υπολογισμός
     }
 
-    // ===== ΥΠΟΒΟΛΗ ΦΟΡΜΑΣ (ίδια ροή, απλώς στέλνουμε τις επιλεγμένες παροχές) =====
+    // Υποβολή φόρμας (ίδια ροή EmailJS – στέλνουμε τις επιλεγμένες παροχές και το σύνολο)
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const name = form.name.value.trim();
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Συγκρότηση περιγραφής επιλεγμένων παροχών για το email
+        // Συγκρότηση περιγραφής επιλεγμένων παροχών
         let extra = '';
         if (servicesFieldset) {
             const checked = servicesFieldset.querySelectorAll('input[type="checkbox"][name="service"]:checked');
@@ -91,8 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.innerHTML = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
-            // Μετά το reset, μηδενίζουμε και την τιμή που φαίνεται
-            calculatePrice();
+            calculatePrice(); // μηδενίζει την τιμή/εμφάνιση
         }, function(error) {
             console.error('EmailJS: Σφάλμα αποστολής!', error);
             resultDiv.innerHTML = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
