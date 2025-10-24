@@ -1,55 +1,58 @@
-// custom.js - Υπολογισμός τιμής προσφοράς και αποστολή email με EmailJS v4
+// custom.js - Υπολογισμός τιμής προσφοράς (με παροχές/checkboxes) και αποστολή email με EmailJS v4
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS v4
     emailjs.init('34r-WzdF4wWkbgCcU'); // Αντικατάστησε με το public key σου από το Dashboard
 
     const form = document.getElementById('interestForm');
-    const hoursSelect = document.getElementById('hours');
-    const photosSelect = document.getElementById('photos');
     const resultDiv = document.getElementById('result');
-   
-    let finalPrice=0;
 
+    // ΝΕΟ: Πεδία/στοιχεία για παροχές
+    const servicesFieldset = document.getElementById('services'); // <fieldset id="services"> ... </fieldset>
+
+    let finalPrice = 0;
+
+    // ===== ΝΕΑ ΣΥΝΑΡΤΗΣΗ ΥΠΟΛΟΓΙΣΜΟΥ ΤΙΜΗΣ ΜΕ CHECKBOXES =====
     function calculatePrice() {
-        let hours = hoursSelect.value;
-        let photos = photosSelect.value;
+        if (!servicesFieldset) {
+            // Αν δεν υπάρχει το fieldset, καθάρισε εμφάνιση και βγες
+            finalPrice = 0;
+            if (resultDiv) resultDiv.innerHTML = '';
+            return;
+        }
+
+        const checked = servicesFieldset.querySelectorAll('input[type="checkbox"][name="service"]:checked');
         let price = 0;
-
-        if (hours === 'all') {
-            price += 250;
-        } else if (hours) {
-            price += 40 + (parseInt(hours) - 1) * 30;
-        }
-
-        if (photos) {
-            let numPhotos = parseInt(photos);
-            if (numPhotos > 50) {
-                price += (numPhotos - 50) * 1.2;
-            }
-        }
+        checked.forEach(chk => {
+            const p = Number(chk.getAttribute('data-price')) || 0;
+            price += p;
+        });
 
         finalPrice = price;
 
-        if (hours && photos) {
+        // Εμφάνιση ενδεικτικής τιμής αν έχει επιλεγεί έστω μία παροχή
+        if (checked.length > 0) {
             resultDiv.innerHTML = '<b>Ενδεικτική τιμή:</b> ' + price.toFixed(2) + '€';
+            resultDiv.style.color = ''; // reset τυχόν κόκκινο/πράσινο
         } else {
             resultDiv.innerHTML = '';
         }
     }
 
-    hoursSelect.addEventListener('change', calculatePrice);
-    photosSelect.addEventListener('change', calculatePrice);
+    // ===== ΑΚΡΟΑΣΤΗΣ ΑΛΛΑΓΩΝ ΣΤΙΣ ΠΑΡΟΧΕΣ =====
+    if (servicesFieldset) {
+        servicesFieldset.addEventListener('change', calculatePrice);
+        // Αρχικός υπολογισμός
+        calculatePrice();
+    }
 
+    // ===== ΥΠΟΒΟΛΗ ΦΟΡΜΑΣ (ίδια ροή, απλώς στέλνουμε τις επιλεγμένες παροχές) =====
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const name = form.name.value.trim();
         const date = form.date ? form.date.value : '';
-        const hours = form.hours ? form.hours.value : '';
-        const photos = form.photos ? form.photos.value : '';
         const email = form.email.value.trim();
         const phone = form.phone.value.trim();
-      
 
         if (!name) {
             resultDiv.textContent = 'Παρακαλώ συμπληρώστε το όνομά σας.';
@@ -57,9 +60,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Συγκρότηση περιγραφής επιλεγμένων παροχών για το email
         let extra = '';
-        if (hours) extra += '\nΏρες: ' + hours;
-        if (photos) extra += '\nΦωτογραφίες: ' + photos;
+        if (servicesFieldset) {
+            const checked = servicesFieldset.querySelectorAll('input[type="checkbox"][name="service"]:checked');
+            if (checked.length > 0) {
+                extra += '\nΠαροχές:\n';
+                checked.forEach(chk => {
+                    const label = chk.closest('label');
+                    const line = label ? label.textContent.trim() : chk.value;
+                    extra += '• ' + line + '\n';
+                });
+            } else {
+                extra += '\nΠαροχές: Καμία\n';
+            }
+        }
 
         console.log('Προσπάθεια αποστολής email μέσω EmailJS...');
 
@@ -67,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
             from_name: name,
             event_date: date,
             extra_info: extra,
-            price: finalPrice.toFixed(2) + '€'
-            , email: email,
+            price: finalPrice.toFixed(2) + '€',
+            email: email,
             phone: phone
         })
         .then(function(response) {
@@ -76,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.innerHTML = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
+            // Μετά το reset, μηδενίζουμε και την τιμή που φαίνεται
+            calculatePrice();
         }, function(error) {
             console.error('EmailJS: Σφάλμα αποστολής!', error);
             resultDiv.innerHTML = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
