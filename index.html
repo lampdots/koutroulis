@@ -1,104 +1,99 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Κουτρουλής - Φωτογραφίσεις Γάμων & Βαπτίσεων</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>Κουτρουλής - Φωτογραφίσεις Γάμων & Βαπτίσεων</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Σύνδεση με CSS και εικονίδια -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1>Κουτρουλής PHOTOGRAPHER–CAMERAMAN</h1>
-      <p>Επαγγελματικές Φωτογραφίσεις Γάμων & Βαπτίσεων</p>
-    </div>
-  </header>
+    <header>
+        <h1>ΚΟΥΤΡΟΥΛΗΣ <span>PHOTOGRAPHER - CAMERAMAN</span></h1>
+        <p>Επαγγελματικές Φωτογραφίσεις Γάμων & Βαπτίσεων</p>
+    </header>
 
-  <main class="container">
-    <section class="intro">
-      <h2>Καλώς ήρθατε!</h2>
-      <p>
-        Ο κος Κουτρουλής και οι συνεργάτες προσφέρουν υψηλής ποιότητας φωτογραφίσεις και βιντεοσκοπήσεις
-        για γάμους, βαπτίσεις και άλλες σημαντικές στιγμές της ζωής σας. Με πολυετή εμπειρία και δημιουργικότητα,
-        απαθανατίζουμε τις πιο όμορφες αναμνήσεις σας.
-      </p>
-      <div class="photos">
-        <img src="photo1.jpg" alt="Γάμος">
-        <img src="photo2.jpg" alt="Βάπτιση">
-        <img src="photo3.jpg" alt="Εκδήλωση">
-      </div>
-    </section>
+    <div class="container">
+        <h2>Καλώς ήρθατε!</h2>
+        <p>
+            Ο κ. Κουτρουλής και οι συνεργάτες του προσφέρουν υψηλής ποιότητας φωτογραφίσεις και βιντεοσκοπήσεις 
+            για γάμους, βαπτίσεις και άλλες σημαντικές στιγμές της ζωής σας. Με πολυετή εμπειρία και δημιουργικότητα, 
+            απαθανατίζουν τις πιο όμορφες αναμνήσεις σας.
+        </p>
 
-    <section class="offers">
-      <h3>Επιλέξτε μία από τις προσφορές μας</h3>
-      <form id="offersForm">
-        <div class="offer-list">
-          <label class="offer">
-            <input type="radio" name="offer" value="wedding_basic">
-            <div class="offer-body">
-              <div class="offer-title">ΓΑΜΟΣ</div>
-              <div class="offer-desc">Προσφορά γάμου στα 690€</div>
-              <div class="offer-price">690€</div>
-            </div>
-          </label>
-
-          <label class="offer">
-            <input type="radio" name="offer" value="baptism_basic">
-            <div class="offer-body">
-              <div class="offer-title">ΒΑΠΤΙΣΗ</div>
-              <div class="offer-desc">Προσφορά βάπτισης στα 590€</div>
-              <div class="offer-price">590€</div>
-            </div>
-          </label>
-
-          <label class="offer">
-            <input type="radio" name="offer" value="combo">
-            <div class="offer-body">
-              <div class="offer-title">ΓΑΜΟΣ & ΒΑΠΤΙΣΗ</div>
-              <div class="offer-desc">Προσφορά γάμου και βάπτισης στα 890€</div>
-              <div class="offer-price">890€</div>
-            </div>
-          </label>
-
-          <label class="offer">
-            <input type="radio" name="offer" value="custom">
-            <div class="offer-body">
-              <div class="offer-title">Δική σας Προσφορά</div>
-              <div class="offer-desc">Επιλέξτε ακριβώς τις υπηρεσίες που θέλετε</div>
-              <div class="offer-price">Εξατομικευμένη τιμή</div>
-            </div>
-          </label>
+        <!-- Εικόνες -->
+        <div class="photos">
+            <img src="photo1.jpg" alt="Γάμος">
+            <img src="photo2.jpg" alt="Βάπτιση">
+            <img src="photo3.jpg" alt="Εκδήλωση">
         </div>
 
-        <button type="submit" id="submitBtn" disabled>Επιλογή Προσφοράς</button>
-      </form>
-    </section>
+        <!-- Προσφορές -->
+        <div class="offers">
+            <h3>Επιλέξτε μία από τις προσφορές μας</h3>
+            <form id="offersForm">
+                <div class="offer-list">
+                    <label class="offer">
+                        <input type="radio" name="offer" value="basic">
+                        <div class="offer-title">ΓΑΜΟΣ</div>
+                        <div class="offer-desc">Προσφορά γάμου στα 690€</div>
+                        <div class="offer-price">690€</div>
+                    </label>
 
-    <section class="contact">
-      <h3>Επικοινωνία</h3>
-      <div class="contact-info">
-        Τηλέφωνο: <a href="tel:6995161771">6995161771</a><br>
-        Email: <a href="mailto:kostask05@hotmail.com">kostask05@hotmail.com</a>
-      </div>
-      <div class="social-links">
-        <a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener">
-          <i class="fab fa-facebook"></i> Facebook
-        </a>
-        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        <a href="https://www.tiktok.com/@yourprofile" target="_blank" rel="noopener">
-          <i class="fab fa-tiktok"></i> TikTok
-        </a>
-      </div>
-    </section>
-  </main>
+                    <label class="offer">
+                        <input type="radio" name="offer" value="premium">
+                        <div class="offer-title">ΒΑΠΤΙΣΗ</div>
+                        <div class="offer-desc">Προσφορά βάπτισης στα 590€</div>
+                        <div class="offer-price">590€</div>
+                    </label>
 
-  <footer class="site-footer">
-    &copy; 2024 Κος Κουτρουλής. Όλα τα δικαιώματα διατηρούνται.
-  </footer>
+                    <label class="offer">
+                        <input type="radio" name="offer" value="deluxe">
+                        <div class="offer-title">ΓΑΜΟΣ & ΒΑΠΤΙΣΗ</div>
+                        <div class="offer-desc">Προσφορά γάμου και βάπτισης στα 890€</div>
+                        <div class="offer-price">890€</div>
+                    </label>
 
-  <script src="index.js"></script>
+                    <label class="offer">
+                        <input type="radio" name="offer" value="custom">
+                        <div class="offer-title">Δική σας Προσφορά</div>
+                        <div class="offer-desc">Επιλέξτε εσείς ώρες και υπηρεσίες που θα θέλατε!</div>
+                        <div class="offer-price">Εξατομικευμένη τιμή</div>
+                    </label>
+                </div>
+
+                <button type="submit" id="submitBtn" disabled>Επιλογή Προσφοράς</button>
+            </form>
+        </div>
+
+        <!-- Επικοινωνία -->
+        <h3>Επικοινωνία</h3>
+        <div class="contact-info">
+            Τηλέφωνο: <a href="tel:6995161771">6995161771</a><br>
+            Email: <a href="mailto:kostask05@hotmail.com">kostask05@hotmail.com</a>
+
+            <!-- Κοινωνικά δίκτυα -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/yourprofile" target="_blank">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a><br>
+                <a href="https://www.instagram.com/yourprofile" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a><br>
+                <a href="https://www.tiktok.com/@yourprofile" target="_blank">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Κος Κουτρουλής. Όλα τα δικαιώματα διατηρούνται.
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>
