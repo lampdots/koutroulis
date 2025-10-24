@@ -37,11 +37,27 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.header-bar h1 {
+/* Εικόνα δίπλα στο κείμενο */
+.header-title {
+    display: inline-flex;
+    align-items: center;       /* κάθετο κέντρο */
+    justify-content: center;
+    gap: 6px;                  /* ελάχιστο κενό */
     margin: 0;
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.logo-inline {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;         /* ή 50% για κυκλικό */
+    border: 2px solid #fff;
+    vertical-align: middle;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 .header-bar p {
@@ -52,8 +68,14 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .header-bar h1 {
-        font-size: 1.5rem;
+    .header-title {
+        flex-direction: column;
+        font-size: 1.4rem;
+        gap: 6px;
+    }
+    .logo-inline {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -62,14 +84,12 @@ body {
     max-width: 900px;
     margin: 2rem auto;
     padding: 2rem;
-    background: rgba(255,255,255,0.95);
+    background: #fff;
     box-shadow: 0 4px 24px rgba(44,62,80,0.08);
     border-radius: 16px;
 }
 
-h2, h3 {
-    color: #2d3e50;
-}
+h2, h3 { color: #2d3e50; }
 
 .photos {
     display: flex;
@@ -108,4 +128,90 @@ h2, h3 {
 }
 .offer {
     display: flex;
-    flex-direction: colum
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    border: 2px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    min-width: 220px;
+    max-width: 260px;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.offer input[type="radio"] {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    accent-color: #2d3e50;
+}
+.offer-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #2d3e50;
+}
+.offer-desc {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+.offer-price {
+    font-size: 1.1rem;
+    color: #1a7f37;
+    font-weight: bold;
+}
+.offer.selected, .offer:hover {
+    border: 2px solid #2d3e50;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+}
+
+/* ===== ΚΟΥΜΠΙ ===== */
+#submitBtn {
+    background: #2d3e50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+#submitBtn:disabled {
+    background: #b0b8c1;
+    cursor: not-allowed;
+}
+#submitBtn:not(:disabled):hover {
+    background: #1a2533;
+}
+
+form#offersForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    background: #2d3e50;
+    color: #e0e7ff;
+    margin-top: 3rem;
+    font-size: 1rem;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
+}
+
+/* ===== Social links ===== */
+.social-links a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.social-links a:hover { color: #007bff; }
+.social-links i { margin-right: 6px; }
