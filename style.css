@@ -24,27 +24,25 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(120deg, rgba(245,245,245,0.3) 60%, rgba(224,231,255,0.3) 100%);
+    background: url('back2.jpg') center center/cover no-repeat fixed;
     color: #222;
 }
 
 /* ===== HEADER ===== */
 .header-bar {
-    background: #2d3e50;
+    background: rgba(45,62,80,0.95);
     color: #fff;
     text-align: center;
     padding: 1.5rem 1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.header-row {
-    display: inline-flex;           /* οριζόντια στοίχιση */
-    align-items: center;            /* κάθετο κεντράρισμα */
+/* Εικόνα δίπλα στο κείμενο */
+.header-title {
+    display: inline-flex;
+    align-items: center;       /* κάθετο κέντρο */
     justify-content: center;
-    gap: 10px;
-}
-
-.header-row h1 {
+    gap: 6px;                  /* ελάχιστο κενό */
     margin: 0;
     font-size: 2rem;
     font-weight: 600;
@@ -52,13 +50,13 @@ body {
     line-height: 1.2;
 }
 
-.logo-small {
-    width: 50px;
-    height: 50px;
+.logo-inline {
+    width: 48px;
+    height: 48px;
     object-fit: cover;
-    border-radius: 6px;
-    display: block;                 /* αποφεύγει baseline offset */
+    border-radius: 6px;         /* ή 50% για κυκλικό */
     border: 2px solid #fff;
+    vertical-align: middle;
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
@@ -68,16 +66,14 @@ body {
     color: #e0e7ff;
 }
 
-/* responsive */
+/* Responsive */
 @media (max-width: 600px) {
-    .header-row {
+    .header-title {
         flex-direction: column;
+        font-size: 1.4rem;
         gap: 6px;
     }
-    .header-row h1 {
-        font-size: 1.4rem;
-    }
-    .logo-small {
+    .logo-inline {
         width: 45px;
         height: 45px;
     }
@@ -93,9 +89,7 @@ body {
     border-radius: 16px;
 }
 
-h2, h3 {
-    color: #2d3e50;
-}
+h2, h3 { color: #2d3e50; }
 
 .photos {
     display: flex;
@@ -219,9 +213,5 @@ footer {
     display: inline-block;
     margin-right: 10px;
 }
-.social-links a:hover {
-    color: #007bff;
-}
-.social-links i {
-    margin-right: 6px;
-}
+.social-links a:hover { color: #007bff; }
+.social-links i { margin-right: 6px; }
