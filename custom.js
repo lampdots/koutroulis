@@ -94,13 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(function(response) {
             console.log('EmailJS: Το email εστάλη επιτυχώς!', response.status, response.text);
-            resultDiv.innerHTML = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
+            resultDiv.textContent = 'Το αίτημά σας εστάλη με επιτυχία! Θα επικοινωνήσουμε σύντομα.';
             resultDiv.style.color = 'green';
             form.reset();
             calculatePrice(); // μηδενίζει την τιμή/εμφάνιση
         }, function(error) {
             console.error('EmailJS: Σφάλμα αποστολής!', error);
-            resultDiv.innerHTML = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
+            resultDiv.textContent = 'Σφάλμα αποστολής. Δοκιμάστε ξανά.';
             resultDiv.style.color = 'red';
         });
     });
