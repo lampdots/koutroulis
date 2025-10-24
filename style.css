@@ -174,3 +174,17 @@ footer {
     border-radius: 0 0 16px 16px;
     box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
 }
+.social-links a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links a:hover {
+    color: #007bff;
+}
+
+.social-links i {
+    margin-right: 6px;
+}
