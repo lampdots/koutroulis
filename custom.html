@@ -29,30 +29,51 @@
 
  <label for="phone">Τηλέφωνο επικοινωνίας:</label>
         <input type="tel" id="phone" name="phone" required> 
-        
-            <label for="hours">Ώρες φωτογράφισης:</label>
-            <select id="hours" name="hours" required>
-                <option value="">Επιλέξτε...</option>
-                <option value="1">1 ώρα</option>
-                <option value="2">2 ώρες</option>
-                <option value="3">3 ώρες</option>
-                <option value="4">4 ώρες</option>
-                <option value="5">5 ώρες</option>
-                <option value="6">6 ώρες</option>
-                <option value="7">7 ώρες</option>
-                <option value="8">8 ώρες</option>
-                <option value="all">Ολοήμερη</option>
-            </select>
-            <label for="photos">Αριθμός φωτογραφιών:</label>
-            <select id="photos" name="photos" required>
-                <option value="">Επιλέξτε...</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
-                <option value="80">80</option>
-                <option value="120">120</option>
-                <option value="200">200</option>
-                <option value="250">250+</option>
-            </select>
+
+        <!-- ΠΑΡΟΧΕΣ ΜΕ CHECKBOXES -->
+<fieldset id="services" class="services">
+  <legend>Επιλέξτε Παροχές</legend>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="extra_hour" data-price="60">
+    +1 ώρα φωτογράφισης — 60€
+  </label>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="drone" data-price="120">
+    Drone λήψεις — 120€
+  </label>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="second_photographer" data-price="150">
+    2ος φωτογράφος — 150€
+  </label>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="video_highlight" data-price="250">
+    Βίντεο highlight (2–3') — 250€
+  </label>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="album" data-price="180">
+    Έντυπο άλμπουμ — 180€
+  </label>
+
+  <label class="service-item">
+    <input type="checkbox" name="service" value="express_delivery" data-price="40">
+    Express παράδοση (72h) — 40€
+  </label>
+</fieldset>
+
+<!-- Σύνολο -->
+<div class="total-row">
+  <strong>Σύνολο:</strong> <span id="totalAmount">0</span>€
+</div>
+
+<!-- Κρυφά πεδία για αποστολή μέσω EmailJS -->
+<input type="hidden" id="selectedServices" name="selectedServices">
+<input type="hidden" id="totalPrice" name="totalPrice">
+
             <button type="submit">Αποστολή</button>
         </form>
         <div id="result"></div>
