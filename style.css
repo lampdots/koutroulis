@@ -1,184 +1,211 @@
-:root{
-  --bg:#fafafa;
-  --card:#ffffff;
-  --text:#111827;
-  --muted:#4b5563;
-  --primary:#2563eb;
-  --primary-dark:#1d4ed8;
-  --border:#e5e7eb;
-  --shadow:0 8px 30px rgba(0,0,0,.08);
+/* style.css */
+
+/* Εμφάνιση επικοινωνίας */
+.contact-info {
+    margin: 2rem 0 0 0;
+    padding: 1.2rem 1.5rem;
+    background: rgba(44,62,80,0.07);
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 1.12rem;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+}
+.contact-info a {
+    color: #2d3e50;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.contact-info a:hover {
+    color: #1a7f37;
+    text-decoration: underline;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family: "Inter","Segoe UI",Arial,sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+/* Γενικές ρυθμίσεις */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: 
+        linear-gradient(120deg, rgba(245,245,245,0.3) 60%, rgba(224,231,255,0.3) 100%),
+        url('back2.jpg') center center/cover no-repeat fixed;
+    color: #222;
 }
 
-.site-header{
-  background: linear-gradient(180deg,#0f172a 0%, #1e293b 100%);
-  color:#fff;
-  padding: 28px 16px;
-}
-.site-header .wrap{
-  max-width: 1060px;
-  margin: 0 auto;
-}
-.site-header h1{
-  margin:0 0 6px;
-  font-size: 1.6rem;
-  letter-spacing: .3px;
-}
-.site-header p{
-  margin:0;
-  opacity:.9;
+/* Header με εικόνα δίπλα στο όνομα */
+header {
+    background: rgba(45,62,80,0.95);
+    color: #fff;
+    padding: 1.8rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-.container{
-  max-width: 1060px;
-  margin: 24px auto;
-  padding: 0 16px;
+h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.intro{
-  background: var(--card);
-  border:1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 20px;
+/* Εικόνα δίπλα στο κείμενο */
+h1 img {
+    height: 45px; /* μικρή εικόνα στο ίδιο ύψος με το κείμενο */
+    width: auto;
+    vertical-align: middle;
+    margin-left: 8px;
 }
 
-.photos{
-  display:grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 12px;
-  margin-top: 12px;
-}
-.photos img{
-  width:100%;
-  height:220px;
-  object-fit: cover;
-  border-radius: 12px;
+header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
+    color: #e0e7ff;
 }
 
-/* OFFERS */
-.offers{
-  margin-top: 22px;
-}
-.offers h3{
-  margin-bottom: 12px;
-}
-
-.offer-list{
-  display:grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
-}
-.offer{
-  display:block;
-  background: var(--card);
-  border:1.5px solid var(--border);
-  border-radius: 14px;
-  padding: 0;
-  cursor: pointer;
-  transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
-  box-shadow: var(--shadow);
-}
-.offer:hover{ transform: translateY(-2px) }
-.offer input{
-  position:absolute;
-  opacity:0;
-  pointer-events:none;
-}
-.offer-body{
-  padding: 14px;
-}
-.offer-title{
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.offer-desc{
-  color: var(--muted);
-  font-size: .95rem;
-  min-height: 42px;
-}
-.offer-price{
-  margin-top: 10px;
-  font-weight: 700;
+/* Κεντρικό πλαίσιο */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+    border-radius: 16px;
 }
 
-/* selected state */
-.offer:has(input:checked){
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.15), var(--shadow);
+h2, h3 {
+    color: #2d3e50;
 }
 
-#offersForm{
-  display:flex;
-  flex-direction: column;
-  gap: 14px;
+/* Εμφάνιση φωτογραφιών */
+.photos {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 2rem 0;
 }
-#submitBtn{
-  align-self: flex-end;
-  background: var(--primary);
-  color:#fff;
-  border:none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background .15s ease, transform .06s ease;
+.photos img {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    border: 2px solid #e0e7ff;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-#submitBtn:disabled{
-  opacity:.5; cursor:not-allowed;
-}
-#submitBtn:hover:not(:disabled){ background: var(--primary-dark) }
-#submitBtn:active:not(:disabled){ transform: scale(.98) }
-
-/* CONTACT */
-.contact{
-  margin-top: 26px;
-  background: var(--card);
-  border:1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 18px;
-}
-.contact-info a{
-  color: var(--primary);
-  text-decoration: none;
-}
-.social-links{
-  display:flex;
-  gap: 14px;
-  margin-top: 10px;
-}
-.social-links a{
-  display:inline-flex; align-items:center; gap:8px;
-  color:#111827; text-decoration:none;
-  padding:8px 10px; border:1px solid var(--border);
-  border-radius: 10px; background:#fff;
-}
-.social-links a:hover{ border-color:#cbd5e1 }
-
-/* FOOTER */
-.site-footer{
-  text-align:center;
-  padding: 24px 12px;
-  color: var(--muted);
+.photos img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(44,62,80,0.18);
 }
 
-/* RESPONSIVE */
-@media (max-width: 980px){
-  .offer-list{ grid-template-columns: repeat(2,1fr); }
-  .photos{ grid-template-columns: repeat(2,1fr); }
+/* Προσφορές */
+.offers {
+    margin: 2.5rem 0;
+    padding: 2rem 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.04);
 }
-@media (max-width: 640px){
-  .offer-list{ grid-template-columns: 1fr; }
-  .photos{ grid-template-columns: 1fr; }
-  #submitBtn{ align-self: stretch; }
-  .site-header h1{ font-size: 1.3rem; }
+.offer-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+.offer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    border: 2px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    min-width: 220px;
+    max-width: 260px;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.offer input[type="radio"] {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    accent-color: #2d3e50;
+}
+.offer-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #2d3e50;
+}
+.offer-desc {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+.offer-price {
+    font-size: 1.1rem;
+    color: #1a7f37;
+    font-weight: bold;
+}
+.offer.selected, .offer:hover {
+    border: 2px solid #2d3e50;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+}
+
+/* Κουμπί */
+#submitBtn {
+    background: #2d3e50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+#submitBtn:disabled {
+    background: #b0b8c1;
+    cursor: not-allowed;
+}
+#submitBtn:not(:disabled):hover {
+    background: #1a2533;
+}
+
+/* Φόρμα */
+form#offersForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    background: #2d3e50;
+    color: #e0e7ff;
+    margin-top: 3rem;
+    font-size: 1rem;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
+}
+
+/* Κοινωνικά δίκτυα */
+.social-links a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.social-links a:hover {
+    color: #007bff;
+}
+.social-links i {
+    margin-right: 6px;
 }
