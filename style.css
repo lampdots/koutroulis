@@ -1,27 +1,6 @@
-/* style.css */
-
-/* Εμφάνιση επικοινωνίας */
-.contact-info {
-    margin: 2rem 0 0 0;
-    padding: 1.2rem 1.5rem;
-    background: rgba(44,62,80,0.07);
-    border-radius: 10px;
-    display: inline-block;
-    font-size: 1.12rem;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.04);
-}
-.contact-info a {
-    color: #2d3e50;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.contact-info a:hover {
-    color: #1a7f37;
-    text-decoration: underline;
-}
-
-/* Γενικές ρυθμίσεις */
+/* ------------------------------
+   ΓΕΝΙΚΕΣ ΡΥΘΜΙΣΕΙΣ
+------------------------------ */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
@@ -32,40 +11,52 @@ body {
     color: #222;
 }
 
-/* Header με εικόνα δίπλα στο όνομα */
+/* ------------------------------
+   HEADER
+------------------------------ */
 header {
-    background: rgba(45,62,80,0.95);
+    background: rgba(0, 0, 0, 0.45);
     color: #fff;
-    padding: 1.8rem 0 1rem 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 2.2rem 1rem 1.5rem 1rem;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
 }
 
 h1 {
     margin: 0;
-    font-size: 2.4rem;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
-/* Εικόνα δίπλα στο κείμενο */
-h1 img {
-    height: 45px; /* μικρή εικόνα στο ίδιο ύψος με το κείμενο */
-    width: auto;
-    vertical-align: middle;
-    margin-left: 8px;
+h1 .subtitle {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #ffb347;
+    margin-top: 0.4rem;
 }
 
 header p {
-    margin: 0.5rem 0 0 0;
-    font-size: 1.2rem;
-    color: #e0e7ff;
+    margin-top: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #f5f5f5;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
-/* Κεντρικό πλαίσιο */
+@media (max-width: 600px) {
+  h1 { font-size: 2rem; }
+  h1 .subtitle { font-size: 1rem; }
+}
+
+/* ------------------------------
+   ΚΥΡΙΟ ΠΕΡΙΕΧΟΜΕΝΟ
+------------------------------ */
 .container {
     max-width: 900px;
     margin: 2rem auto;
@@ -79,7 +70,9 @@ h2, h3 {
     color: #2d3e50;
 }
 
-/* Εμφάνιση φωτογραφιών */
+/* ------------------------------
+   ΦΩΤΟΓΡΑΦΙΕΣ
+------------------------------ */
 .photos {
     display: flex;
     gap: 1.5rem;
@@ -100,7 +93,9 @@ h2, h3 {
     box-shadow: 0 6px 24px rgba(44,62,80,0.18);
 }
 
-/* Προσφορές */
+/* ------------------------------
+   ΠΡΟΣΦΟΡΕΣ
+------------------------------ */
 .offers {
     margin: 2.5rem 0;
     padding: 2rem 1rem;
@@ -177,26 +172,29 @@ h2, h3 {
     background: #1a2533;
 }
 
-/* Φόρμα */
-form#offersForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* ------------------------------
+   ΕΠΙΚΟΙΝΩΝΙΑ
+------------------------------ */
+.contact-info {
+    margin: 2rem 0 0 0;
+    padding: 1.2rem 1.5rem;
+    background: rgba(44,62,80,0.07);
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 1.12rem;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+}
+.contact-info a {
+    color: #2d3e50;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.contact-info a:hover {
+    color: #1a7f37;
+    text-decoration: underline;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1.5rem 0 1rem 0;
-    background: #2d3e50;
-    color: #e0e7ff;
-    margin-top: 3rem;
-    font-size: 1rem;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
-}
-
-/* Κοινωνικά δίκτυα */
 .social-links a {
     color: #333;
     text-decoration: none;
@@ -208,4 +206,18 @@ footer {
 }
 .social-links i {
     margin-right: 6px;
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+footer {
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    background: #2d3e50;
+    color: #e0e7ff;
+    margin-top: 3rem;
+    font-size: 1rem;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 -2px 8px rgba(44,62,80,0.04);
 }
