@@ -44,6 +44,76 @@
       <div class="lb-counter" aria-live="polite"></div>
     </div>
   `;
+// gallery.js — grid + lightbox από το παγκόσμιο IMAGES[]
+// Δουλεύει με απλά relative paths και δίνει καθαρό μήνυμα όταν κάτι δεν φορτώνει.
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('gallery');
+
+  if (!container) {
+    console.error('Δεν βρέθηκε #gallery στο DOM.');
+    return;
+  }
+
+  // Έλεγχος ύπαρξης IMAGES και σωστού τύπου
+  if (!Array.isArray(window.IMAGES)) {
+    container.innerHTML = '<p style="color:#94a3b8">Δεν έχει οριστεί ο πίνακας IMAGES.</p>';
+    console.error('Το IMAGES δεν είναι πίνακας (Array). Δήλωσέ το ΠΡΙΝ το <script src="gallery.js">.');
+    return;
+  }
+  if (window.IMAGES.length === 0) {
+    container.innerHTML = '<p style="color:#94a3b8">Δεν έχουν προστεθεί ακόμα εικόνες.</p>';
+    return;
+  }
+
+  // Δημιουργία grid
+  const frag = document.createDocumentFragment();
+  window.IMAGES.forEach((src, idx) => {
+    const item = document.createElement('div');
+    item.className = 'g-item';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Φωτογραφία ${idx + 1}`;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    // DEBUG/διάγνωση
+    img.addEventListener('load', () => {
+      // ok
+      // console.log('OK:', img.currentSrc || img.src);
+    });
+    img.addEventListener('error', () => {
+      console.error('ΔΕΝ ΒΡΕΘΗΚΕ:', src, '— έλεγξε διαδρομή/κεφαλαία/κατάληξη.');
+      const fallback = document.createElement('div');
+      fallback.style = "display:flex;align-items:center;justify-content:center;height:220px;color:#94a3b8;font-size:14px;padding:8px;text-align:center";
+      fallback.textContent = `Δεν βρέθηκε: ${src}`;
+      img.replaceWith(fallback);
+    });
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', `Προβολή φωτογραφίας ${idx + 1}`);
+    btn.addEventListener('click', () => openLightbox(idx));
+
+    item.appendChild(img);
+    item.appendChild(btn);
+    frag.appendChild(item);
+  });
+  container.appendChild(frag);
+
+  // Lightbox DOM
+  const lb = document.createElement('div');
+  lb.className = 'lb';
+  lb.innerHTML = `
+    <div class="lb-figure" role="dialog" aria-modal="true" aria-label="Μεγάλη προβολή εικόνας">
+      <button class="lb-close" aria-label="Κλείσιμο (Esc)">✕</button>
+      <button class="lb-prev" aria-label="Προηγούμενη (←)">❮</button>
+      <img class="lb-img" alt="">
+      <button class="lb-next" aria-label="Επόμενη (→)">❯</button>
+      <div class="lb-counter" aria-live="polite"></div>
+    </div>
+  `;
   document.body.appendChild(lb);
 
   const imgEl = lb.querySelector('.lb-img');
@@ -56,6 +126,8 @@
   let lastFocused = null;
 
   function update() {
+    // Προφυλάξεις αν IMAGES είναι κενό/μικρότερο
+    if (!window.IMAGES.length) return;
     imgEl.src = window.IMAGES[current];
     imgEl.alt = `Φωτογραφία ${current + 1} από ${window.IMAGES.length}`;
     counter.textContent = `${current + 1} / ${window.IMAGES.length}`;
@@ -82,8 +154,14 @@
     else if (e.key === 'ArrowLeft') prev();
   }
 
-  function next() { current = (current + 1) % window.IMAGES.length; update(); }
-  function prev() { current = (current - 1 + window.IMAGES.length) % window.IMAGES.length; update(); }
+  function next() {
+    current = (current + 1) % window.IMAGES.length;
+    update();
+  }
+  function prev() {
+    current = (current - 1 + window.IMAGES.length) % window.IMAGES.length;
+    update();
+  }
 
   closeBtn.addEventListener('click', closeLightbox);
   nextBtn.addEventListener('click', next);
@@ -93,5 +171,4 @@
   lb.addEventListener('click', (e) => {
     if (e.target === lb) closeLightbox();
   });
-
-})();
+});
