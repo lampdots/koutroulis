@@ -1,5 +1,5 @@
 // gallery.js — grid + lightbox από το παγκόσμιο IMAGES[]
-// Δουλεύει με απλά relative paths και δίνει καθαρό μήνυμα όταν κάτι δεν φορτώνει.
+// Δουλεύει με relative paths και εμφανίζει καθαρά μηνύματα όταν κάτι δεν φορτώνει.
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('gallery');
@@ -32,11 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.loading = 'lazy';
     img.decoding = 'async';
 
-    // DEBUG/διάγνωση
-    img.addEventListener('load', () => {
-      // ok
-      // console.log('OK:', img.currentSrc || img.src);
-    });
+    // Διάγνωση σφαλμάτων φόρτωσης
     img.addEventListener('error', () => {
       console.error('ΔΕΝ ΒΡΕΘΗΚΕ:', src, '— έλεγξε διαδρομή/κεφαλαία/κατάληξη.');
       const fallback = document.createElement('div');
@@ -80,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastFocused = null;
 
   function update() {
-    // Προφυλάξεις αν IMAGES είναι κενό/μικρότερο
     if (!window.IMAGES.length) return;
     imgEl.src = window.IMAGES[current];
     imgEl.alt = `Φωτογραφία ${current + 1} από ${window.IMAGES.length}`;

@@ -18,12 +18,21 @@
 
   <!-- Δήλωσε ΠΑΝΤΑ το IMAGES πριν το gallery.js -->
   <script>
-    // Αν οι εικόνες είναι σε φάκελο /wedding/, γράψε: "wedding/w1.jpg", ...
-    const IMAGES = [
-      "wedding/w1.jpg", "wedding/w2.jpg", "wedding/w3.jpg"
+    // Αν οι εικόνες είναι σε φάκελο /wedding/ δίπλα στο HTML:
+    window.IMAGES = [
+      "wedding/w1.jpg",
+      "wedding/w2.jpg",
+      "wedding/w3.jpg"
     ];
+
+    // Παράδειγμα για διαφορετική δομή φακέλων:
+    // - Αν το HTML είναι σε /pages/ και οι εικόνες σε /wedding/ στη ρίζα:
+    // window.IMAGES = ["../wedding/w1.jpg","../wedding/w2.jpg","../wedding/w3.jpg"];
+    //
+    // - Αν οι εικόνες είναι στον ίδιο φάκελο με το HTML:
+    // window.IMAGES = ["w1.jpg","w2.jpg","w3.jpg"];
   </script>
 
-  <script src="gallery.js"></script>
+  <script defer src="gallery.js"></script>
 </body>
 </html>
