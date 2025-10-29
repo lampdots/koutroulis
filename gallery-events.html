@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gallery Εκδηλώσεων | Κουτρουλής</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+  <header class="g-header">
+    <a class="g-back" href="index.html">← Αρχική</a>
+    <h1>Gallery Εκδηλώσεων</h1>
+  </header>
+
+  <main>
+    <div id="gallery" class="g-grid" aria-live="polite"></div>
+  </main>
+
+  <script>
+    const IMAGES = [
+      "events/e1.jpg","events/e2.jpg","events/e3.jpg",
+      // ...
+    ];
+  </script>
+
+  <script src="gallery.js"></script>
+</body>
+</html>
