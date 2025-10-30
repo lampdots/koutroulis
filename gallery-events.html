@@ -2,14 +2,14 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8" />
-  <title>Gallery Εκδηλώσεων | Κουτρουλής</title>
+  <title>Gallery ΔΕΞΙΩΣΕΩΝ | Κουτρουλής</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="gallery.css" />
 </head>
 <body>
   <header class="g-header">
-    <a class="g-back" href="index.html">← Αρχική</a>
-    <h1>Gallery Εκδηλώσεων</h1>
+    <a class="g-back" href="index.html" aria-label="Επιστροφή στην αρχική">← Αρχική</a>
+    <h1>Gallery ΔΕΞΙΩΣΗΣ</h1>
   </header>
 
   <main>
@@ -17,12 +17,110 @@
   </main>
 
   <script>
-    const IMAGES = [
-      "events/e1.jpg","events/e2.jpg","events/e3.jpg",
-      // ...
-    ];
+    // ============== ΡΥΘΜΙΣΕΙΣ ==============
+    // Βάση φακέλου για τις εικόνες του γάμου
+    const basePath = "events/";
+
+    // Fallback scan όταν ΔΕΝ υπάρχει directory listing:
+    // αρχεία με αρίθμηση π.χ. e1.jpg, e2.jpg, ... e999.jpg
+    const scanConfig = {
+      prefix: "e",       // πρόθεμα ονόματος αρχείου
+      start: 1,          // από ποιο νούμερο ξεκινάμε
+      end: 999,          // μέχρι ποιο νούμερο να δοκιμάσουμε
+      pad: 0,            // μηδενικά μπροστά (π.χ. 3 => e001.jpg)
+      exts: ["jpg","jpeg","png","webp","avif"]
+    };
+    // =======================================
+
+    // 1) Προσπάθησε να διαβάσεις directory listing (αν ο server το επιτρέπει)
+    async function tryDirectoryListing(dirUrl) {
+      try {
+        const res = await fetch(dirUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("No index listing");
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let links = Array.from(doc.querySelectorAll("a"))
+          .map(a => a.getAttribute("href"))
+          .filter(Boolean);
+
+        const reExt = /\.(jpe?g|png|gif|webp|avif)$/i;
+        // Κρατάμε μόνο καθαρά ονόματα αρχείων (όχι ../, ./, ?query κλπ)
+        links = links.filter(h => reExt.test(h) && !h.startsWith("?") && !h.startsWith("/"));
+
+        // Αν τα href είναι πλήρη paths, τα κανονικοποιούμε
+        const images = links.map(h => (h.startsWith("http") ? h : (dirUrl.endsWith("/") ? dirUrl : dirUrl + "/") + h));
+        return images;
+      } catch (e) {
+        return null; // αποτυχία → θα πάμε σε fallback
+      }
+    }
+
+    // 2) Fallback: σάρωση με αρίθμηση αρχείων (χωρίς να αλλάζεις κώδικα όταν προσθέτεις)
+    async function probeNumberedFiles(base, cfg) {
+      const found = [];
+
+      // helper: δημιουργεί όνομα με προθέματα/μηδενικά
+      const padNumber = (n, width) => ("" + n).padStart(width, "0");
+      const candidates = [];
+
+      for (let i = cfg.start; i <= cfg.end; i++) {
+        const num = cfg.pad > 0 ? padNumber(i, cfg.pad) : i;
+        for (const ext of cfg.exts) {
+          candidates.push(`${base}${cfg.prefix}${num}.${ext}`);
+        }
+      }
+
+      // Θα κάνουμε “light” έλεγχο ύπαρξης με Image().onload/onerror
+      // και θα σταματάμε αν έχουμε π.χ. 50 συνεχόμενα άκυρα για ταχύτητα.
+      let consecutiveMisses = 0;
+      const MAX_MISSES = 50;
+
+      const checkImg = (url) => new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve({ url, ok: true });
+        img.onerror = () => resolve({ url, ok: false });
+        img.src = url + `?t=${Date.now()}`; // bust cache
+      });
+
+      for (const url of candidates) {
+        // σταματάμε νωρίτερα αν ξεφύγει
+        if (consecutiveMisses >= MAX_MISSES && found.length > 0) break;
+        // δοκιμή
+        // eslint-disable-next-line no-await-in-loop
+        const res = await checkImg(url);
+        if (res.ok) {
+          found.push(res.url);
+          consecutiveMisses = 0;
+        } else {
+          consecutiveMisses++;
+        }
+      }
+
+      return found;
+    }
+
+    (async () => {
+      // 1η προσπάθεια: directory listing
+      const fromListing = await tryDirectoryListing(basePath);
+      if (Array.isArray(fromListing) && fromListing.length) {
+        window.IMAGES = fromListing;
+      } else {
+        // 2η προσπάθεια: σάρωση με αρίθμηση
+        const scanned = await probeNumberedFiles(basePath, scanConfig);
+        window.IMAGES = scanned;
+      }
+
+      // Αν δεν βρέθηκε τίποτα, ενημέρωσε φιλικά
+      if (!Array.isArray(window.IMAGES) || window.IMAGES.length === 0) {
+        console.warn("Δεν βρέθηκε directory listing και δεν βρέθηκαν αριθμημένα αρχεία βάσει του κανόνα.");
+        // Προαιρετικό: δείξε placeholder ή μήνυμα στο DOM
+        window.IMAGES = []; // το gallery.js θα εμφανίσει μήνυμα «Δεν έχουν προστεθεί ακόμα εικόνες.»
+      }
+
+      document.dispatchEvent(new Event("IMAGES_READY"));
+    })();
   </script>
 
-  <script src="gallery.js"></script>
+  <script defer src="gallery.js"></script>
 </body>
 </html>
