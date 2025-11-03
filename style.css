@@ -70,18 +70,41 @@ h2, h3 {
     flex-wrap: wrap;
     margin: 2rem 0;
 }
-.photos img {
-    width: 180px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
-    border: 2px solid #e0e7ff;
-    transition: transform 0.2s, box-shadow 0.2s;
+.gallery-labels {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
 }
-.photos img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 24px rgba(44,62,80,0.18);
+.gallery-card {
+    display: block;
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 200px;
+    max-width: 300px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+    box-shadow: 0 6px 18px rgba(44,62,80,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .14s ease, box-shadow .14s ease;
+}
+.gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(44,62,80,0.12);
+}
+.gallery-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    color: #2d3e50;
+}
+.gallery-sub {
+    font-size: 0.95rem;
+    color: #556;
+    line-height: 1.3;
 }
 
 /* ------------------------------
