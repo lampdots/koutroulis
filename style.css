@@ -290,6 +290,7 @@ footer {
         font-size: 0.9rem;
         border-radius: 0;
     }
+    .gallery-card { flex: 1 1 100%; max-width: none; }
 }
 
 /* Πολύ μικρές οθόνες */
