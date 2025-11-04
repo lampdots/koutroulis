@@ -1,111 +1,117 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <meta charset="UTF-8">
-    <title>Κουτρουλής - Φωτογραφίσεις Γάμων & Βαπτίσεων</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Κουτρουλής - Φωτογραφίσεις Γάμων & Βαπτίσεων</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS & Font Awesome -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS & Icons -->
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 </head>
-
 <body>
-    <header>
-        <h1>
-            ΚΟΥΤΡΟΥΛΗΣ 
-            <span class="subtitle">PHOTOGRAPHER - CAMERAMAN</span>
-        </h1>
-        <p>Επαγγελματικές Φωτογραφίσεις Γάμων & Βαπτίσεων</p>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>
+      ΚΟΥΤΡΟΥΛΗΣ
+      <span class="subtitle">PHOTOGRAPHER - CAMERAMAN</span>
+    </h1>
+    <p>Επαγγελματικές Φωτογραφίσεις Γάμων &amp; Βαπτίσεων</p>
+  </header>
 
-    <div class="container">
-        <h2>Καλώς ήρθατε!</h2>
-        <p>
-            Ο κ. Κουτρουλής και οι συνεργάτες του προσφέρουν υψηλής ποιότητας φωτογραφίσεις και βιντεοσκοπήσεις 
-            για γάμους, βαπτίσεις και άλλες σημαντικές στιγμές της ζωής σας. Με πολυετή εμπειρία και δημιουργικότητα, 
-            σας  προσφέρουν πολύ όμορφες αναμνήσεις.
-        </p>
-        <h3>Δείτε τα Gallery μας</h3>
-               <div class="gallery-labels">
-            <a class="gallery-card" href="gallery-wedding.html" aria-label="Άνοιγμα gallery Γάμου">
-               <div class="gallery-title">Gallery — Γάμος</div>
-                <div class="gallery-sub">Ρομαντικές στιγμές & τελετή</div>
-            </a>
+  <!-- Όλο το περιεχόμενο μέσα στο container -->
+  <div class="container">
+    <!-- Καλωσόρισμα -->
+    <h2>Καλώς ήρθατε!</h2>
+    <p>
+      Ο κ. Κουτρουλής και οι συνεργάτες του προσφέρουν υψηλής ποιότητας
+      φωτογραφίσεις και βιντεοσκοπήσεις για γάμους, βαπτίσεις και άλλες
+      σημαντικές στιγμές της ζωής σας. Με πολυετή εμπειρία και δημιουργικότητα,
+      σας προσφέρουν πολύ όμορφες αναμνήσεις.
+    </p>
 
-           <a class="gallery-card" href="gallery-baptism.html" aria-label="Άνοιγμα gallery Βάπτισης">
-                <div class="gallery-title">Gallery — Βάπτιση</div>
-                <div class="gallery-sub">Μελωδίες, νονός/νονά & στιγμές</div>
-           </a>
+    <!-- Gallery links -->
+    <h3>Δείτε τα Gallery μας</h3>
+    <div class="gallery-labels">
+      <a class="gallery-card" href="gallery-wedding.html" aria-label="Άνοιγμα gallery Γάμου">
+        <div class="gallery-title">Gallery — Γάμος</div>
+        <div class="gallery-sub">Ρομαντικές στιγμές &amp; τελετή</div>
+      </a>
 
-            <a class="gallery-card" href="gallery-events.html" aria-label="Άνοιγμα gallery Εκδηλώσεων">
-                <div class="gallery-title">Gallery — ΓΑΜΟΥ-ΒΑΠΤΙΣΗΣ</div>
-                <div class="gallery-sub">ΟΛΑ ΜΑΖΙ</div>
-            </a>
-        </div>
-         </div>
+      <a class="gallery-card" href="gallery-baptism.html" aria-label="Άνοιγμα gallery Βάπτισης">
+        <div class="gallery-title">Gallery — Βάπτιση</div>
+        <div class="gallery-sub">Μελωδίες, νονός/νονά &amp; στιγμές</div>
+      </a>
 
-
-
-
-        <!-- Προσφορές -->
-        <div class="offers">
-            <h3>Επιλέξτε μία από τις προσφορές μας</h3>
-            <form id="offersForm">
-                <div class="offer-list">
-                    <label class="offer">
-                        <input type="radio" name="offer" value="basic">
-                        <div class="offer-title">ΓΑΜΟΣ</div>
-                        <div class="offer-desc">Προσφορά γάμου στα 690€</div>
-                        <div class="offer-price">690€</div>
-                    </label>
-
-                    <label class="offer">
-                        <input type="radio" name="offer" value="premium">
-                        <div class="offer-title">ΒΑΠΤΙΣΗ</div>
-                        <div class="offer-desc">Προσφορά βάπτισης στα 590€</div>
-                        <div class="offer-price">590€</div>
-                    </label>
-
-                    <label class="offer">
-                        <input type="radio" name="offer" value="deluxe">
-                        <div class="offer-title">ΓΑΜΟΣ & ΒΑΠΤΙΣΗ</div>
-                        <div class="offer-desc">Προσφορά γάμου και βάπτισης στα 890€</div>
-                        <div class="offer-price">890€</div>
-                    </label>
-
-                    <label class="offer">
-                        <input type="radio" name="offer" value="custom">
-                        <div class="offer-title">Δική σας Προσφορά</div>
-                        <div class="offer-desc">Επιλέξτε εσείς ώρες και υπηρεσίες που θα θέλατε!</div>
-                        <div class="offer-price">Εξατομικευμένη τιμή</div>
-                    </label>
-                </div>
-
-                <button type="submit" id="submitBtn" disabled>Επιλογή Προσφοράς</button>
-            </form>
-        </div>
-
-        <!-- Επικοινωνία -->
-        <h3>Επικοινωνία</h3>
-        <div class="contact-info">
-            Τηλέφωνο: <a href="tel:6995161771">6995161771</a><br>
-            Email: <a href="mailto:kostask05@hotmail.com">kostask05@hotmail.com</a>
-
-            <!-- Κοινωνικά δίκτυα -->
-            <div class="social-links">
-                <br>
-                <a href="https://www.instagram.com/photo_koutroulis" target="_blank">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-            </div>
-        </div>
+      <a class="gallery-card" href="gallery-events.html" aria-label="Άνοιγμα gallery Γάμου &amp; Βάπτισης">
+        <div class="gallery-title">Gallery — ΓΑΜΟΥ-ΒΑΠΤΙΣΗΣ</div>
+        <div class="gallery-sub">ΟΛΑ ΜΑΖΙ</div>
+      </a>
     </div>
 
-    <footer>
-        &copy; 2025  Κουτρουλής. Όλα τα δικαιώματα διατηρούνται.
-    </footer>
+    <!-- Προσφορές -->
+    <div class="offers">
+      <h3>Επιλέξτε μία από τις προσφορές μας</h3>
 
-    <script src="index.js"></script>
+      <form id="offersForm">
+        <div class="offer-list">
+          <label class="offer">
+            <input type="radio" name="offer" value="wedding" />
+            <div class="offer-title">ΓΑΜΟΣ</div>
+            <div class="offer-desc">Προσφορά γάμου στα 690€</div>
+            <div class="offer-price">690€</div>
+          </label>
+
+          <label class="offer">
+            <input type="radio" name="offer" value="baptism" />
+            <div class="offer-title">ΒΑΠΤΙΣΗ</div>
+            <div class="offer-desc">Προσφορά βάπτισης στα 590€</div>
+            <div class="offer-price">590€</div>
+          </label>
+
+          <label class="offer">
+            <input type="radio" name="offer" value="wedding_baptism" />
+            <div class="offer-title">ΓΑΜΟΣ &amp; ΒΑΠΤΙΣΗ</div>
+            <div class="offer-desc">Προσφορά γάμου και βάπτισης στα 890€</div>
+            <div class="offer-price">890€</div>
+          </label>
+
+          <label class="offer">
+            <input type="radio" name="offer" value="custom" />
+            <div class="offer-title">Δική σας Προσφορά</div>
+            <div class="offer-desc">Επιλέξτε εσείς ώρες και υπηρεσίες που θα θέλατε!</div>
+            <div class="offer-price">Εξατομικευμένη τιμή</div>
+          </label>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>Επιλογή Προσφοράς</button>
+      </form>
+    </div>
+
+    <!-- Επικοινωνία -->
+    <h3>Επικοινωνία</h3>
+    <div class="contact-info">
+      Τηλέφωνο: <a href="tel:6995161771">6995161771</a><br />
+      Email: <a href="mailto:kostask05@hotmail.com">kostask05@hotmail.com</a>
+
+      <div class="social-links">
+        <br />
+        <a href="https://www.instagram.com/photo_koutroulis" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </div><!-- /container -->
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Κουτρουλής. Όλα τα δικαιώματα διατηρούνται.
+  </footer>
+
+  <!-- Προαιρετικό JS (αν το χρησιμοποιείς) -->
+  <script src="index.js"></script>
 </body>
 </html>
